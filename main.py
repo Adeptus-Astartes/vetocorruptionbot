@@ -41,7 +41,10 @@ def handle_text(message):
         nabu = types.InlineKeyboardButton(text="НАБУ", callback_data="nabu")
         gpu = types.InlineKeyboardButton(text="ГПУ", callback_data="gpu")
         sbu = types.InlineKeyboardButton(text="СБУ", callback_data="sbu")
-        keyboard.add(nazk, nabu, gpu, sbu)
+        vaks = types.InlineKeyboardButton(text="ВАКС", callback_data="vaks")
+        vrp = types.InlineKeyboardButton(text="ВРП", callback_data="vrp")
+
+        keyboard.add(nazk, nabu, gpu, sbu, vaks, vrp)
         bot.send_message(
             message.chat.id,
             "Оберіть орган у який ви хочете звернутись",
@@ -62,6 +65,12 @@ def callback_inline(call):
         bot.send_message(call.message.chat.id, file.read())
     elif call.data == 'sbu':
         file = open('contacts_sbu.txt', 'r')
+        bot.send_message(call.message.chat.id, file.read())
+    elif call.data == 'vaks':
+        file = open('contacts_vaks.txt', 'r')
+        bot.send_message(call.message.chat.id, file.read())
+    elif call.data == 'vrp':
+        file = open('contacts_vrp.txt', 'r')
         bot.send_message(call.message.chat.id, file.read())
 
 
